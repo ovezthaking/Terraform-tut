@@ -21,9 +21,9 @@ data "aws_ami" "amazon_linux_2" {
 
 resource "aws_instance" "app_server" {
   ami = data.aws_ami.amazon_linux_2.id
-  instance_type = "t3.micro"
+  instance_type = var.ec2_instance_type
 
   tags = {
-    Name = "MyNewTerraformInstance"
+    Name = var.instance_name
   }
 }
